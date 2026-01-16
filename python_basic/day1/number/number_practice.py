@@ -1,0 +1,27 @@
+# 간단한 계산기
+a = 100
+b = 30
+
+print("더하기:", a + b)
+print("빼기:", a - b)
+print("곱하기:", a * b)
+print("나누기:", a / b)
+print("몫:", a // b)
+print("나머지:", a % b)
+
+
+# 나눗셈 비교
+number = 17
+divisor = 5
+
+# 일반 나누기 (/)
+result1 = number / divisor
+print("17 / 5 =", result1)  # 3.4
+
+# 몫만 구하기 (//)
+result2 = number // divisor
+print("17 // 5 =", result2)  # 3
+
+# 나머지만 구하기 (%)
+result3 = number % divisor
+print("17 % 5 =", result3)  # 2
