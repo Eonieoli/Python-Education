@@ -32,27 +32,3 @@ scores = []  # 여기에 점수 채우기
 # 김철수: 85점
 # 이영희: 90점
 # ...
-
-
-# 힌트
-##################################################
-# 기초 3번: 특정 학생 점수 찾기
-name = "김철수"
-index = students.index(name)
-score = scores[index]
-
-# 응용 5번: 평균 계산
-total = sum(scores)
-count = len(scores)
-average = total / count
-
-# 응용 6번: 최고 점수 학생
-max_score = max(scores)
-max_index = scores.index(max_score)
-top_student = students[max_index]
-
-# 도전 8번: 성적표 출력 (for문 버전)
-print("===== 성적표 =====")
-for i in range(len(students)):
-    print(f"{students[i]}: {scores[i]}점")
-##################################################
