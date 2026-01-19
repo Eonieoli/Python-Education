@@ -193,6 +193,20 @@ for rank, score in enumerate(sorted(scores, reverse=True), start=1):
     print(f"{rank}등: {score}점")
 
 
+# 간단한 중첩 for문
+for i in range(3):
+    for j in range(2):
+        print(f"i={i}, j={j}")
+
+# 출력 결과:
+# i=0, j=0
+# i=0, j=1    ← i가 0일 때 j가 0, 1
+# i=1, j=0
+# i=1, j=1    ← i가 1일 때 j가 0, 1
+# i=2, j=0
+# i=2, j=1    ← i가 2일 때 j가 0, 1
+
+
 # for문 안에 if문
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 

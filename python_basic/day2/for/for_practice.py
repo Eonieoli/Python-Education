@@ -47,3 +47,37 @@ for i in range(1, 6):
 # ***
 # ****
 # *****
+
+
+# 2차원 리스트 (리스트 안에 리스트)
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+# 2차원 리스트 출력
+for row in matrix:
+    for num in row:
+        print(num, end=' ')
+    print()  # 줄바꿈
+
+# 출력 결과:
+# 1 2 3 
+# 4 5 6 
+# 7 8 9
+
+
+# 2단부터 9단까지 전체 출력
+for dan in range(2, 10):
+    for num in range(1, 10):
+        print(f"{dan} x {num} = {dan * num}")
+    print()  # 단 사이 공백
+
+# 출력 결과:
+# 2 x 1 = 2
+# ...
+# 2 x 9 = 18
+#              ← 빈 줄
+# 3 x 1 = 3
+# ...
