@@ -1,0 +1,106 @@
+# 실습 1: 도서 정보
+# 제목, 저자, 출판년도, 가격 정보를 담은 딕셔너리 생성
+# Key: title, author, year, price
+
+# 실습 2: 음식점 정보
+# 이름, 음식종류, 평점, 영업중 여부를 담은 딕셔너리
+# Key: name, cuisine, rating, is_open
+# is_open은 Boolean 값 사용
+
+# 실습 3: 학생 성적
+# 이름, 국어, 영어, 수학 점수를 담은 딕셔너리
+# 그리고 평균 점수를 계산해서 출력
+
+
+# 실습 4: 프로필 관리
+profile = {"name": "김철수", "age": 25}
+# 1. "city": "서울" 추가
+# 2. age를 26으로 수정
+# 3. "job": "엔지니어" 추가
+# 4. 전체 출력
+
+# 실습 5: 상품 관리
+product = {
+    "name": "노트북",
+    "price": 1500000,
+    "stock": 5,
+    "on_sale": True
+}
+# 1. 할인 종료: on_sale을 False로 변경
+# 2. 재고 3개 증가
+# 3. "category": "전자제품" 추가
+# 4. 전체 출력
+
+# 실습 6: 임시 데이터 정리
+data = {
+    "id": 1,
+    "name": "테스트",
+    "temp": "임시",
+    "cache": "캐시"
+}
+# 1. temp 삭제 (del 사용)
+# 2. cache 삭제 (pop 사용, 삭제된 값 출력)
+# 3. "status": "active" 추가
+
+
+# 연습 1: 설정 정보 확인
+config = {
+    "theme": "dark",
+    "language": "ko",
+    "notifications": True,
+    "auto_save": True
+}
+# 1. 모든 설정 항목(Key) 출력
+# 2. 모든 설정 값(Value) 출력
+# 3. "language" 설정이 있는지 확인
+# 4. "font_size" 설정이 있는지 확인
+
+# 연습 2: 사용자 검증
+user_input = {
+    "username": "hong",
+    "email": "hong@test.com"
+}
+# 필수 필드 확인
+# 1. username이 있는지 확인
+# 2. email이 있는지 확인
+# 3. password가 있는지 확인
+# 모두 있으면 "검증 성공", 하나라도 없으면 "필수 정보 누락" 출력
+
+# 연습 3: 메뉴 정보
+menu = {"김치찌개": 8000, "된장찌개": 7000, "순두부": 7500}
+# 1. 모든 메뉴 이름 출력
+# 2. 모든 가격 출력
+# 3. "불고기"가 메뉴에 있는지 확인
+
+
+# 연습 1: 학생 목록
+students = [
+    {"name": "김철수", "score": 85},
+    {"name": "이영희", "score": 92},
+    {"name": "박민수", "score": 78}
+]
+# 1. 두 번째 학생의 이름 출력
+# 2. 첫 번째 학생의 점수 출력
+# 3. 새 학생 {"name": "최지은", "score": 88} 추가
+# 4. 전체 학생 수 출력
+
+# 연습 2: 메뉴 목록
+menu = [
+    {"name": "아메리카노", "price": 4000, "hot": True},
+    {"name": "라떼", "price": 4500, "hot": True}
+]
+# 1. 아이스 아메리카노 추가 (price: 4500, hot: False)
+# 2. 첫 번째 메뉴의 가격을 3500으로 변경
+# 3. 모든 메뉴의 이름만 리스트로 만들기 (힌트: for문 또는 건너뛰기)
+
+# 연습 3: API 응답 형태
+response = {
+    "status": "success",
+    "data": [
+        {"id": 1, "title": "첫 게시글"},
+        {"id": 2, "title": "두 번째 게시글"}
+    ]
+}
+# 1. status 값 출력
+# 2. data의 첫 번째 게시글 제목 출력
+# 3. 전체 게시글 수 출력
