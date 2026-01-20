@@ -1,3 +1,38 @@
+# 빈 리스트
+empty_list = []
+
+# 숫자 리스트
+numbers = [1, 2, 3, 4, 5]
+
+# 문자열 리스트 (가장 많이 사용!)
+fruits = ["apple", "banana", "orange"]
+students = ["김철수", "이영희", "박민수"]
+
+# 혼합 (권장하지 않음)
+mixed = [1, "hello", 3.14, True]
+
+print(fruits)  # ['apple', 'banana', 'orange']
+print(len(students))  # 3
+
+
+# 리스트 인덱싱
+fruits = ["apple", "banana", "orange", "grape"]
+
+print(fruits[0])   # apple
+print(fruits[1])   # banana
+print(fruits[-1])  # grape (마지막)
+
+# 리스트 슬라이싱
+print(fruits[0:2])   # ['apple', 'banana']
+print(fruits[1:])    # ['banana', 'orange', 'grape']
+print(fruits[:3])    # ['apple', 'banana', 'orange']
+
+# 실용 예제
+students = ["김철수", "이영희", "박민수", "최지은", "정수진"]
+top_3 = students[:3]  # 상위 3명
+print(top_3)  # ['김철수', '이영희', '박민수']
+
+
 # append: 맨 뒤에 추가
 fruits = ["apple", "banana"]
 fruits.append("orange")
