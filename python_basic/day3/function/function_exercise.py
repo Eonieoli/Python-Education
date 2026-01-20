@@ -1,0 +1,74 @@
+# 연습 1: 인사 함수
+# say_hello(name) 함수를 만들어서
+# "안녕하세요, {name}님!" 출력
+
+# 연습 2: 제곱 함수
+# square(n) 함수를 만들어서
+# n의 제곱을 반환
+# 예: square(5) → 25
+
+# 연습 3: 짝수 판별 함수
+# is_even(num) 함수를 만들어서
+# 짝수면 True, 홀수면 False 반환
+# 힌트: num % 2 == 0
+
+# 연습 4: 최댓값 찾기 함수
+# find_max(numbers) 함수를 만들어서
+# 리스트에서 최댓값 반환
+# 힌트: max(numbers) 사용
+
+
+# 연습 1: 할인가 계산
+# calculate_price(price, discount=0) 함수 작성
+# discount가 없으면 원가 그대로 반환
+# 있으면 할인 적용 (price * (1 - discount))
+# 예: calculate_price(10000, 0.1) → 9000
+
+# 연습 2: 사용자 정보 생성
+# create_profile(name, age, city="서울", job="미정") 함수
+# 딕셔너리로 반환
+# 예: create_profile("김철수", 25) 
+#     → {"name": "김철수", "age": 25, "city": "서울", "job": "미정"}
+
+# 연습 3: 인사 메시지
+# greet(name, time="아침") 함수
+# time이 "아침"이면 "좋은 아침입니다"
+# "저녁"이면 "좋은 저녁입니다"
+# 예: greet("김철수") → "좋은 아침입니다, 김철수님!"
+
+# 연습 4: 상품 필터링
+products = [
+    {"name": "노트북", "price": 1500000},
+    {"name": "마우스", "price": 30000},
+    {"name": "키보드", "price": 80000}
+]
+# filter_products(products, max_price=100000) 함수
+# max_price 이하 상품만 반환
+
+
+# 연습 1: 학생 정보 반환
+# get_student_info(name, korean, english, math) 함수
+# 이름, 세 과목 점수, 평균, 등급을 딕셔너리로 반환
+# 예: {"name": "김철수", "korean": 85, "english": 90, 
+#      "math": 88, "average": 87.7, "grade": "B"}
+
+# 연습 2: 상품 검색
+products = [
+    {"id": 1, "name": "노트북", "price": 1500000},
+    {"id": 2, "name": "마우스", "price": 30000}
+]
+# find_product(products, product_id) 함수
+# 찾으면 {"found": True, "product": {...}}
+# 못 찾으면 {"found": False, "product": None}
+
+# 연습 3: 비밀번호 검증
+# validate_password(password) 함수
+# 8자 이상이면 valid: True
+# 아니면 valid: False, 이유 메시지도 포함
+# 예: {"valid": True, "message": "안전한 비밀번호"}
+#     {"valid": False, "message": "8자 이상 필요"}
+
+# 연습 4: 통계 계산
+# calculate_statistics(numbers) 함수
+# 최소, 최대, 평균, 중앙값을 딕셔너리로 반환
+# 힌트: 중앙값은 정렬 후 중간값
