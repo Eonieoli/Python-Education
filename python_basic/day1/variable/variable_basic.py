@@ -1,3 +1,7 @@
+##################################################
+# 변수 만들고 출력
+##################################################
+
 # 변수 생성하기
 name = "김철수"
 age = 25
@@ -9,11 +13,27 @@ print(age)
 print(height)
 
 
+##################################################
+# type() 함수로 타입 확인
+##################################################
+
 # type() 함수로 타입 확인
 name = "김철수"
 age = 25
 height = 175.5
+is_engineer = True
 
-print(type(name))    # <class 'str'>
-print(type(age))     # <class 'int'>
-print(type(height))  # <class 'float'>
+print(type(name))           # <class 'str'>
+print(type(age))            # <class 'int'>
+print(type(height))         # <class 'float'>
+print(type(is_engineer))    # <class 'bool'>
+
+
+##################################################
+# 타입 힌트 미리보기
+##################################################
+
+# 타입을 명시할 수도 있다
+name: str = "김철수"
+age: int = 25
+height: float = 175.5
