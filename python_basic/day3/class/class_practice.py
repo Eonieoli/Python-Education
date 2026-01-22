@@ -100,30 +100,6 @@ cheap_products = [p for p in products if p.price < 100000]
 print(f"\n저렴한 상품 {len(cheap_products)}개")
 
 
-# Pydantic 모델 (클래스 상속 활용!)
-from pydantic import BaseModel
-
-class Product(BaseModel):  # ← BaseModel 상속
-    name: str
-    price: int
-    stock: int
-
-# FastAPI 엔드포인트
-products = []
-
-@app.post("/products")
-def create_product(product: Product):  # ← Product 클래스 사용!
-    products.append(product)
-    return {"message": "상품이 생성되었습니다"}
-
-@app.get("/products")
-def get_products():
-    return {"products": products}  # ← 객체 리스트 반환!
-
-# 📌 오늘 배운 클래스 개념이 그대로 사용됨!
-# 📌 객체 리스트 관리도 똑같음!
-
-
 # 부모 클래스
 class Animal:
     def __init__(self, name):
