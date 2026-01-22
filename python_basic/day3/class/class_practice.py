@@ -1,47 +1,167 @@
-class User:
-    def __init__(self, name, age, email):
+class Student:
+    def __init__(self, name, age):
+        print(f"self는: {self}")  # 객체 자신 출력
         self.name = name
         self.age = age
+
+# 실행해보기
+print("student1 만들기:")
+student1 = Student("김철수", 20)
+print(f"student1은: {student1}")
+
+print("\nstudent2 만들기:")
+student2 = Student("이영희", 21)
+print(f"student2는: {student2}")
+
+# 결과
+# student1 만들기:
+# self는: <__main__.Student object at 0x...>
+# student1은: <__main__.Student object at 0x...>
+# ↑ 주소가 같음! self = student1
+
+
+class User:
+    def __init__(self, username, email, age):
+        self.username = username
         self.email = email
-        
-    def to_dict(self):
-        """객체 → 딕셔너리"""
-        return {
-            "name": self.name,
-            "age": self.age,
-            "email": self.email
-        }
-        
-    @classmethod
-    def from_dict(cls, data):
-        """딕셔너리 → 객체"""
-        return cls(
-            name=data["name"],
-            age=data["age"],
-            email=data["email"]
-        )
+        self.age = age
 
-# 객체 생성
-user = User("김철수", 25, "kim@test.com")
+# 여러 사용자 만들기
+user1 = User("김철수", "kim@example.com", 25)
+user2 = User("이영희", "lee@example.com", 30)
+user3 = User("박민수", "park@example.com", 28)
 
-# 객체 → 딕셔너리 (API 응답용)
-user_dict = user.to_dict()
-print(user_dict)
+# 정보 확인하기
+print(f"사용자1: {user1.username}, {user1.email}, {user1.age}세")
+print(f"사용자2: {user2.username}, {user2.email}, {user2.age}세")
 
-# 딕셔너리 → 객체 (API 요청 처리)
-data = {"name": "이영희", "age": 30, "email": "lee@test.com"}
-new_user = User.from_dict(data)
-print(new_user.name)  # 이영희
+# 속성 수정하기
+user1.age = 26  # 나이 수정 가능!
+print(f"수정 후: {user1.age}세")
 
-# 실용 예제: JSON 데이터 처리
-import json
+# 📌 클래스 하나로 객체 여러 개!
 
-# 객체 → JSON
-json_str = json.dumps(user.to_dict(), ensure_ascii=False)
-print(json_str)
 
-# JSON → 객체
-json_data = '{"name": "박민수", "age": 28, "email": "park@test.com"}'
-dict_data = json.loads(json_data)
-user_from_json = User.from_dict(dict_data)
-print(user_from_json.name)
+# 같은 클래스로 여러 객체 만들기
+
+class Product:
+    def __init__(self, name, price, stock):
+        self.name = name
+        self.price = price
+        self.stock = stock
+    
+    def get_info(self):
+        return f"{self.name}: {self.price}원 (재고: {self.stock})"
+
+# 여러 상품 만들기
+product1 = Product("노트북", 1500000, 5)
+product2 = Product("마우스", 30000, 20)
+product3 = Product("키보드", 80000, 15)
+
+# 모두 출력
+print(product1.get_info())
+print(product2.get_info())
+print(product3.get_info())
+
+# 📌 클래스 하나로 객체 무한대!
+# 📌 각 객체는 독립적인 데이터 보유
+
+
+# 객체들을 리스트로 관리하기
+class Product:
+    def __init__(self, name, price, stock):
+        self.name = name
+        self.price = price
+        self.stock = stock
+    
+    def get_info(self):
+        return f"{self.name}: {self.price}원"
+
+# 상품들을 리스트에 담기
+products = [
+    Product("노트북", 1000000, 5),
+    Product("마우스", 30000, 20),
+    Product("키보드", 80000, 15)
+]
+
+# for 문으로 순회
+print("=== 전체 상품 목록 ===")
+for product in products:
+    print(product.get_info())
+
+# 조건 검색
+print("\n=== 10만원 이하 상품 ===")
+for product in products:
+    if product.price <= 100000:
+        print(product.get_info())
+
+# 리스트 컴프리헨션
+cheap_products = [p for p in products if p.price < 100000]
+print(f"\n저렴한 상품 {len(cheap_products)}개")
+
+
+# Pydantic 모델 (클래스 상속 활용!)
+from pydantic import BaseModel
+
+class Product(BaseModel):  # ← BaseModel 상속
+    name: str
+    price: int
+    stock: int
+
+# FastAPI 엔드포인트
+products = []
+
+@app.post("/products")
+def create_product(product: Product):  # ← Product 클래스 사용!
+    products.append(product)
+    return {"message": "상품이 생성되었습니다"}
+
+@app.get("/products")
+def get_products():
+    return {"products": products}  # ← 객체 리스트 반환!
+
+# 📌 오늘 배운 클래스 개념이 그대로 사용됨!
+# 📌 객체 리스트 관리도 똑같음!
+
+
+# 부모 클래스
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    
+    def speak(self):
+        return "소리를 냅니다"
+
+# 자식 클래스
+class Dog(Animal):  # ← Animal을 상속!
+    def __init__(self, name, breed):
+        super().__init__(name)  # 부모의 __init__ 호출
+        self.breed = breed  # Dog만의 속성 추가
+    
+    def speak(self):  # 메서드 재정의
+        return "멍멍!"
+
+# 사용해보기
+dog = Dog("바둑이", "진돗개")
+print(dog.name)   # 바둑이 (Animal에서 물려받음)
+print(dog.breed)  # 진돗개 (Dog에서 추가)
+print(dog.speak()) # 멍멍! (Dog에서 재정의)
+
+
+from pydantic import BaseModel
+
+# BaseModel을 상속받아 사용!
+class User(BaseModel):  # ← 상속!
+    name: str
+    age: int
+    email: str
+
+# 왜 상속을 쓸까?
+# BaseModel이 이미 가지고 있는 기능:
+# ✅ 자동 데이터 검증
+# ✅ JSON 변환 (model_dump())
+# ✅ 타입 체크
+# 이 모든 걸 User가 물려받음!
+
+user = User(name="김철수", age=25, email="kim@example.com")
+print(user.model_dump())  # ← BaseModel에서 물려받은 메서드!
