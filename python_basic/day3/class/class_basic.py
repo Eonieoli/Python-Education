@@ -114,6 +114,31 @@ student2 = Student("이영희", 30)
 
 
 ##################################################
+# 클래스에도 타입 힌트 사용하기
+##################################################
+
+# 함수에서 배운 타입 힌트를 클래스에도!
+class User:
+    # __init__에 타입 힌트 추가
+    def __init__(self, name: str, age: int, email: str) -> None:
+        self.name = name
+        self.age = age
+        self.email = email
+    
+    # 메서드에도 타입 힌트
+    def get_info(self) -> str:
+        return f"{self.name} ({self.age}살)"
+    
+    def is_adult(self) -> bool:
+        return self.age >= 18
+
+# 사용할 때도 명확!
+user = User("김철수", 25, "kim@example.com")
+print(user.get_info())  # 김철수 (25살)
+print(user.is_adult())  # True
+
+
+##################################################
 # Product 클래스 만들기
 ##################################################
 

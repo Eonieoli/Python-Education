@@ -122,3 +122,88 @@ def get_even_numbers(numbers):
 
 evens = get_even_numbers([1, 2, 3, 4, 5, 6])
 print(evens)  # [2, 4, 6]
+
+
+##################################################
+# 연습 4: 타입 힌트가 있는 함수 만들기
+##################################################
+
+# 간단한 타입 힌트
+def multiply(x: int, y: int):
+    return x * y
+
+result = multiply(5, 3)
+print(result)  # 15
+
+# 문자열과 숫자 조합
+def repeat_text(text: str, times: int):
+    return text * times
+
+print(repeat_text("안녕", 3))  # 안녕안녕안녕
+
+# 여러 타입 힌트
+def calculate_total(price: int, quantity: int, discount: int):
+    total = price * quantity - discount
+    return total
+
+print(calculate_total(10000, 3, 5000))  # 25000
+
+
+##################################################
+# 연습 5: 완전한 타입 힌트 함수
+##################################################
+
+# 완전한 타입 힌트
+def calculate_average(scores: list) -> float:
+    total = sum(scores)
+    count = len(scores)
+    return total / count
+
+result = calculate_average([85, 90, 78])
+print(f"평균: {result}")
+
+# 문자열 반환
+def make_greeting(name: str, age: int) -> str:
+    return f"{name}님은 {age}살입니다"
+
+message = make_greeting("철수", 25)
+print(message)
+
+# None 반환
+def show_product(name: str, price: int) -> None:
+    print(f"상품명: {name}")
+    print(f"가격: {price}원")
+
+show_product("노트북", 1500000)
+
+
+##################################################
+# 연습 6: 딕셔너리 반환 함수 타입 힌트
+##################################################
+
+# 딕셔너리를 반환하는 함수 (FastAPI 스타일!)
+def create_user(name: str, age: int, email: str) -> dict:
+    return {
+        "name": name,
+        "age": age,
+        "email": email
+    }
+
+user = create_user("김철수", 25, "kim@example.com")
+print(user)
+
+# 상품 정보 생성
+def create_product(
+    name: str, 
+    price: int, 
+    stock: int
+) -> dict:
+    return {
+        "name": name,
+        "price": price,
+        "stock": stock,
+        "available": stock > 0  # 재고가 있으면 True
+    }
+
+product = create_product("노트북", 1500000, 5)
+print(product)

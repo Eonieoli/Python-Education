@@ -2,7 +2,7 @@
 # 실습 1: 클래스 기본
 ##################################################
 
-# 실습 1-1: Book 클래스
+# 실습 1-1: Book 클래스 (+ 타입 힌트)
 # 책 정보를 담는 클래스를 만드세요
 # 속성: title(제목), author(저자), pages(페이지 수)
 # 메서드: get_info() - "제목: {}, 저자: {}, {}페이지" 형식으로 반환
@@ -16,7 +16,7 @@ book = Book("파이썬", "홍길동", 300)
 print(book.get_info())
 
 
-# 실습 1-2: BankAccount 클래스
+# 실습 1-2: BankAccount 클래스 (+ 타입 힌트)
 # 은행 계좌 클래스를 만드세요
 # 속성: owner(예금주), balance(잔액, 초기값 0)
 # 메서드: 
@@ -35,7 +35,7 @@ account.withdraw(3000)
 print(account.get_balance())  # 7000
 
 
-# 실습 1-3: Rectangle 클래스
+# 실습 1-3: Rectangle 클래스 (+ 타입 힌트)
 # 직사각형 클래스를 만드세요
 # 속성: width(가로), height(세로)
 # 메서드:
@@ -52,7 +52,7 @@ print(rect.area())       # 50
 print(rect.perimeter())  # 30
 
 
-# 실습 1-4: Counter 클래스
+# 실습 1-4: Counter 클래스 (+ 타입 힌트)
 # 카운터 클래스를 만드세요
 # 속성: count(초기값 0)
 # 메서드:

@@ -54,7 +54,43 @@ print(f"student2는: {student2}")
 
 
 ##################################################
-# 연습 3: 여러 인스턴스 생성하기
+# 연습 3: 타입 힌트가 있는 클래스 만들기
+##################################################
+
+# Product 클래스 (타입 힌트 포함)
+class Product:
+    def __init__(self, name: str, price: int, stock: int) -> None:
+        self.name = name
+        self.price = price
+        self.stock = stock
+    
+    def get_total_value(self) -> int:
+        return self.price * self.stock
+    
+    def is_available(self) -> bool:
+        return self.stock > 0
+
+# 사용 예시
+laptop = Product("노트북", 1500000, 5)
+print(f"재고 가치: {laptop.get_total_value()}원")
+print(f"구매 가능: {laptop.is_available()}")
+
+# 할인가 계산 메서드 추가
+class Product:
+    def __init__(self, name: str, price: int, stock: int) -> None:
+        self.name = name
+        self.price = price
+        self.stock = stock
+    
+    def get_discounted_price(self, discount_rate: int) -> int:
+        return self.price * (100 - discount_rate) // 100
+
+product = Product("키보드", 80000, 10)
+print(f"20% 할인가: {product.get_discounted_price(20)}원")
+
+
+##################################################
+# 연습 4: 여러 인스턴스 생성하기
 ##################################################
 
 # 같은 클래스로 여러 객체 만들기
@@ -83,7 +119,7 @@ print(product3.get_info())
 
 
 ##################################################
-# 연습 4: 인스턴스 리스트 관리하기
+# 연습 5: 인스턴스 리스트 관리하기
 ##################################################
 
 # 객체들을 리스트로 관리하기
@@ -120,7 +156,7 @@ print(f"\n저렴한 상품 {len(cheap_products)}개")
 
 
 ##################################################
-# 연습 5: 클래스 상속 기본
+# 연습 6: 클래스 상속 기본
 ##################################################
 
 # 부모 클래스
@@ -148,7 +184,7 @@ print(dog.speak()) # 멍멍! (Dog에서 재정의)
 
 
 ##################################################
-# 연습 6: FastAPI 스타일 미리보기
+# 연습 7: FastAPI 스타일 미리보기
 ##################################################
 
 from pydantic import BaseModel

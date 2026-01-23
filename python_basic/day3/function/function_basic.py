@@ -114,3 +114,47 @@ result = get_items()  # skip=0, limit=10
 
 # 필요시 변경
 result = get_items(skip=10, limit=5)
+
+
+##################################################
+# 매개변수 타입 힌트 기본
+##################################################
+
+# 타입 힌트 기본 문법: 매개변수 뒤에 콜론(:)과 타입
+def add_numbers(a: int, b: int):
+    return a + b
+
+def introduce(name: str, age: int):
+    return f"제 이름은 {name}이고, {age}살입니다"
+
+# 여러 타입 힌트
+def process_data(
+    title: str,
+    price: int,
+    is_available: bool,
+    tags: list
+):
+    print(f"{title}: {price}원")
+
+
+##################################################
+# 반환 타입 힌트: 화살표 사용
+##################################################
+
+# 반환 타입 힌트: -> 화살표 사용
+def add(a: int, b: int) -> int:
+    return a + b
+
+# "int 두 개를 받아서 int를 반환한다"는 의미!
+
+def greet(name: str) -> str:
+    return f"안녕하세요, {name}님!"
+
+# 반환값이 없는 함수는 -> None
+def print_info(name: str, age: int) -> None:
+    print(f"{name}님은 {age}살입니다")
+    # return이 없어요!
+
+# 여러 값 반환 (튜플)
+def get_min_max(numbers: list) -> tuple:
+    return min(numbers), max(numbers)
