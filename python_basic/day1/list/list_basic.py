@@ -212,3 +212,27 @@ if search_name in students:
     print(f"위치: {index + 1}번째")
 else:
     print("찾을 수 없습니다.")
+
+
+##################################################
+# 리스트와 내장 함수
+##################################################
+
+# 리스트로 통계를 쉽게!
+numbers = [85, 92, 78, 88, 95]
+
+# 리스트 길이
+print(len(numbers))  # 5
+
+# 합계 구하기
+print(sum(numbers))  # 438
+
+# 최댓값 찾기
+print(max(numbers))  # 95
+
+# 최솟값 찾기
+print(min(numbers))  # 78
+
+# 평균 구하기 (조합!)
+average = sum(numbers) / len(numbers)
+print(average)  # 87.6

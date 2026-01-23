@@ -126,3 +126,41 @@ if not found:
 
 # 간단한 버전
 print("영희" in str(contacts))  # True
+
+
+##################################################
+# 연습 6: 내장 함수 연습
+##################################################
+
+# 온도 데이터 분석
+temperatures = [22, 25, 19, 28, 24, 21, 26]
+
+print(f"일주일 평균 기온: {sum(temperatures) / len(temperatures):.1f}도")
+print(f"최고 기온: {max(temperatures)}도")
+print(f"최저 기온: {min(temperatures)}도")
+
+# 쇼핑 금액 계산
+prices = [12000, 5500, 8900, 15000]
+
+total = sum(prices)
+print(f"총 금액: {total:,}원")
+
+
+##################################################
+# 연습 7: 문자열에도 사용 가능
+##################################################
+
+# 문자열 리스트에도 사용 가능!
+names = ["Alice", "Bob", "Charlie", "David"]
+
+# 길이
+print(len(names))  # 4
+
+# 최댓값? (알파벳 순서로!)
+print(max(names))  # David
+
+# 최솟값?
+print(min(names))  # Alice
+
+# 주의: sum()은 숫자에만!
+# sum(names)  # 에러!
