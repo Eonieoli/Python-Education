@@ -1,3 +1,36 @@
+##################################################
+# 연습 1: 매개변수가 있는 메서드
+##################################################
+
+class Student:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self.grade = None  # 처음엔 성적 없음
+    
+    # 성적을 설정하는 메서드
+    def set_grade(self, grade):
+        self.grade = grade
+        print(f"{self.name}의 성적이 {grade}로 설정되었습니다.")
+    
+    # 나이를 확인하는 메서드
+    def is_adult(self):
+        return self.age >= 20
+
+# 사용하기
+student = Student("김철수", 20)
+
+# 성적 설정
+student.set_grade("A")  # self 외에 grade를 받음!
+
+# 성인 여부 확인
+if student.is_adult():
+    print(f"{student.name}은 성인입니다.")
+
+##################################################
+# 연습 2: self 이해하기
+##################################################
+
 class Student:
     def __init__(self, name, age):
         print(f"self는: {self}")  # 객체 자신 출력
@@ -20,27 +53,9 @@ print(f"student2는: {student2}")
 # ↑ 주소가 같음! self = student1
 
 
-class User:
-    def __init__(self, username, email, age):
-        self.username = username
-        self.email = email
-        self.age = age
-
-# 여러 사용자 만들기
-user1 = User("김철수", "kim@example.com", 25)
-user2 = User("이영희", "lee@example.com", 30)
-user3 = User("박민수", "park@example.com", 28)
-
-# 정보 확인하기
-print(f"사용자1: {user1.username}, {user1.email}, {user1.age}세")
-print(f"사용자2: {user2.username}, {user2.email}, {user2.age}세")
-
-# 속성 수정하기
-user1.age = 26  # 나이 수정 가능!
-print(f"수정 후: {user1.age}세")
-
-# 📌 클래스 하나로 객체 여러 개!
-
+##################################################
+# 연습 3: 여러 인스턴스 생성하기
+##################################################
 
 # 같은 클래스로 여러 객체 만들기
 
@@ -66,6 +81,10 @@ print(product3.get_info())
 # 📌 클래스 하나로 객체 무한대!
 # 📌 각 객체는 독립적인 데이터 보유
 
+
+##################################################
+# 연습 4: 인스턴스 리스트 관리하기
+##################################################
 
 # 객체들을 리스트로 관리하기
 class Product:
@@ -100,6 +119,10 @@ cheap_products = [p for p in products if p.price < 100000]
 print(f"\n저렴한 상품 {len(cheap_products)}개")
 
 
+##################################################
+# 연습 5: 클래스 상속 기본
+##################################################
+
 # 부모 클래스
 class Animal:
     def __init__(self, name):
@@ -123,6 +146,10 @@ print(dog.name)   # 바둑이 (Animal에서 물려받음)
 print(dog.breed)  # 진돗개 (Dog에서 추가)
 print(dog.speak()) # 멍멍! (Dog에서 재정의)
 
+
+##################################################
+# 연습 6: FastAPI 스타일 미리보기
+##################################################
 
 from pydantic import BaseModel
 

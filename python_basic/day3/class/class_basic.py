@@ -1,3 +1,7 @@
+##################################################
+# 첫 번째 클래스 만들기
+##################################################
+
 # 가장 간단한 클래스
 class Student:
     pass  # 일단 비워두기
@@ -16,6 +20,10 @@ print(type(student1))  # <class '__main__.Student'>
 # - 클래스() 하면 객체(인스턴스) 생성
 
 
+##################################################
+# __init__ 사용하기
+##################################################
+
 class Student:
     def __init__(self, name, age):
         self.name = name
@@ -31,6 +39,36 @@ print(student1.age)   # 25
 print(student2.name)  # 이영희
 print(student2.age)   # 30
 
+
+##################################################
+# User 클래스 만들기
+##################################################
+
+class User:
+    def __init__(self, username, email, age):
+        self.username = username
+        self.email = email
+        self.age = age
+
+# 여러 사용자 만들기
+user1 = User("김철수", "kim@example.com", 25)
+user2 = User("이영희", "lee@example.com", 30)
+user3 = User("박민수", "park@example.com", 28)
+
+# 정보 확인하기
+print(f"사용자1: {user1.username}, {user1.email}, {user1.age}세")
+print(f"사용자2: {user2.username}, {user2.email}, {user2.age}세")
+
+# 속성 수정하기
+user1.age = 26  # 나이 수정 가능!
+print(f"수정 후: {user1.age}세")
+
+# 📌 클래스 하나로 객체 여러 개!
+
+
+##################################################
+# 메서드 만들기
+##################################################
 
 class Student:
     def __init__(self, name, age, grade):
@@ -55,33 +93,29 @@ print(student2.introduce())      # 안녕하세요, 저는 이영희이고 30세
 print(student1.get_grade_info()) # 김철수의 성적: A
 
 
+##################################################
+# self의 의미
+##################################################
+
 class Student:
     def __init__(self, name, age):
-        self.name = name
+        self.name = name                # self = 이 객체 자신
         self.age = age
-        self.grade = None  # 처음엔 성적 없음
-    
-    # 성적을 설정하는 메서드
-    def set_grade(self, grade):
-        self.grade = grade
-        print(f"{self.name}의 성적이 {grade}로 설정되었습니다.")
-    
-    # 나이를 확인하는 메서드
-    def is_adult(self):
-        return self.age >= 20
 
-# 사용하기
-student = Student("김철수", 20)
+# 객체를 만들 때
+student1 = Student("김철수", 25)
+# 내부적으로는 이렇게 동작
+# Student.__init__(student1, "김철수", 25)
+#                       └→ self가 student1을 가리킴
 
-# 성적 설정
-student.set_grade("A")  # self 외에 grade를 받음!
-
-# 성인 여부 확인
-if student.is_adult():
-    print(f"{student.name}은 성인입니다.")
+student2 = Student("이영희", 30)
+# Student.__init__(student2, "이영희", 30)
+#                       └→ self가 student2를 가리킴
 
 
-# 같이 따라 쳐봅시다!
+##################################################
+# Product 클래스 만들기
+##################################################
 
 class Product:
     def __init__(self, name, price, stock):
@@ -113,6 +147,10 @@ if laptop.is_available():
 laptop.apply_discount(0.1)  # 10% 할인
 print(laptop.get_info())  # 노트북: 1350000원 (재고: 5)
 
+
+##################################################
+# 클래스 상속 기본 문법
+##################################################
 
 # 부모 클래스
 class 부모클래스:
