@@ -1,81 +1,80 @@
-class Product:
-    def __init__(self, id, name, price, stock):
-        self.id = id
-        self.name = name
-        self.price = price
-        self.stock = stock
-        
-    def sell(self, quantity):
-        if self.stock >= quantity:
-            self.stock -= quantity
-            return True
-        return False
-        
-    def restock(self, quantity):
-        self.stock += quantity
-        
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "price": self.price,
-            "stock": self.stock
-        }
+# 기초 1: Product 클래스 구현 (타입 힌트 필수!)
+# 속성: name (str), price (int), stock (int)
+# 메서드:
+#   - __init__(self, name: str, price: int, stock: int)
+#   - get_info(self) -> str : 상품 정보를 문자열로 반환
 
-products = []
-next_id = 1
+# 기초 2: 상품 추가 함수 구현
+def add_product(products: list) -> None:
+    """
+    사용자에게 상품명, 가격, 재고를 입력받아
+    Product 객체를 생성하고 products 리스트에 추가
+    """
+    # 여기에 코드 작성
 
-def add_product(name, price, stock):
-    global next_id
-    product = Product(next_id, name, price, stock)
-    products.append(product)
-    next_id += 1
-    return product.to_dict()
+# 기초 3: 전체 상품 조회 함수 구현  
+def show_all_products(products: list) -> None:
+    """
+    products 리스트의 모든 상품 정보를 출력
+    상품이 없으면 "등록된 상품이 없습니다" 출력
+    """
+    # 여기에 코드 작성
 
-def find_product(product_id):
-    for product in products:
-        if product.id == product_id:
-            return product
-    return None
 
-def list_products():
-    return [p.to_dict() for p in products]
+# 응용 1: 상품 검색 함수 구현
+def search_product(products: list, name: str) -> Product | None:
+    """
+    이름으로 상품을 검색해서 찾으면 Product 객체 반환
+    없으면 None 반환
+    힌트: for문 + if문, 찾으면 return
+    """
+    # 여기에 코드 작성
 
-def sell_product(product_id, quantity):
-    try:
-        product = find_product(product_id)
-        if not product:
-            return {"success": False, "message": "상품을 찾을 수 없습니다"}
-        
-        if product.sell(quantity):
-            return {
-                "success": True,
-                "message": "판매 완료",
-                "product": product.to_dict()
-            }
-        else:
-            return {
-                "success": False,
-                "message": f"재고 부족 (현재 재고: {product.stock})"
-            }
-    except Exception as e:
-        return {"success": False, "message": f"에러: {str(e)}"}
+# 응용 2: 상품 삭제 함수 구현 (예외 처리 포함)
+def delete_product(products: list, name: str) -> None:
+    """
+    이름으로 상품을 찾아서 삭제
+    없으면 "해당 상품이 없습니다" 메시지 출력
+    힌트: search_product 함수 재사용, remove 메서드
+    """
+    # 여기에 코드 작성
 
-def filter_by_price(min_price, max_price):
-    return [
-        p.to_dict() 
-        for p in products 
-        if min_price <= p.price <= max_price
-    ]
+# 응용 3: 가격 입력 검증 함수 구현
+def get_valid_price() -> int:
+    """
+    사용자에게 가격을 입력받되, 
+    - 숫자가 아니면 다시 입력받기 (ValueError 처리)
+    - 0 이하면 raise ValueError("가격은 0보다 커야 합니다")
+    - 정상이면 int로 반환
+    힌트: while + try-except + raise
+    """
+    # 여기에 코드 작성
 
-def calculate_total_value():
-    return sum(p.price * p.stock for p in products)
 
-# 테스트
-add_product("노트북", 1500000, 10)
-add_product("마우스", 30000, 50)
+# 도전 1: 메인 프로그램 완성하기
+# while문으로 메뉴를 반복해서 보여주고
+# 사용자 선택에 따라 함수를 호출하세요
 
-print("전체 상품:", list_products())
-print("판매 결과:", sell_product(1, 2))
-print("가격 필터:", filter_by_price(0, 100000))
-print("총 재고 가치:", calculate_total_value())
+"""
+=== 상품 관리 프로그램 ===
+1. 상품 추가
+2. 전체 조회
+3. 상품 검색
+4. 상품 삭제
+5. 종료
+선택: 
+"""
+
+# 힌트: 
+# products = []로 시작
+# while True:
+#     메뉴 출력
+#     choice = input()
+#     if choice == "1": ...
+#     elif choice == "5": break
+
+# 도전 2: 재고 관리 기능 추가 (선택)
+# Product 클래스에 메서드 추가:
+#   - add_stock(self, amount: int) -> None
+#   - reduce_stock(self, amount: int) -> None
+# reduce_stock에서는 재고가 부족하면 raise 사용
