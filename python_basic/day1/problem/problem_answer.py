@@ -4,7 +4,7 @@
 students = ["김철수", "이영희", "박민수", "최지훈", "한소미"]
 scores = [85, 92, 78, 88, 90]
 
-print("=== 초기 데이터 ===")
+print("=== 학생 성적 관리 시스템 ===")
 print(f"학생: {students}")
 print(f"점수: {scores}")
 print()
@@ -15,14 +15,14 @@ print()
 ##################################################
 print("=== 기초 1: 이영희의 점수 찾기 ===")
 
-# 방법 1: index() 사용
+# 방법 1: 단계별로
 student_name = "이영희"
 student_index = students.index(student_name)
 student_score = scores[student_index]
 print(f"{student_name}의 점수: {student_score}점")
 
 # 방법 2: 한 줄로
-print(f"{student_name}의 점수: {scores[students.index(student_name)]}점")
+print(f"이영희의 점수: {scores[students.index('이영희')]}점")
 
 # 출력: 이영희의 점수: 92점
 print()
@@ -33,7 +33,6 @@ print()
 ##################################################
 print("=== 기초 2: 새 학생 추가 ===")
 
-# 학생 추가
 students.append("정수진")
 scores.append(95)
 
@@ -64,27 +63,19 @@ print()
 
 
 ##################################################
-# 기초 4: 성적표 출력
+# 기초 4: 처음 3명의 성적표 출력
 ##################################################
-print("=== 기초 4: 성적표 ===")
+print("=== 기초 4: 처음 3명 성적표 ===")
 
-# 방법 1: 인덱스 사용
-for i in range(len(students)):
-    print(f"{students[i]}: {scores[i]}점")
-
-print()
-
-# 방법 2: enumerate 사용 (더 좋은 방법!)
-for i, student in enumerate(students):
-    print(f"{student}: {scores[i]}점")
+# 하나씩 출력 (for문 없이!)
+print(f"{students[0]}: {scores[0]}점")
+print(f"{students[1]}: {scores[1]}점")
+print(f"{students[2]}: {scores[2]}점")
 
 # 출력:
 # 김철수: 85점
 # 이영희: 92점
 # 박민수: 78점
-# 최지훈: 88점
-# 한소미: 90점
-# 정수진: 95점
 print()
 
 
@@ -93,16 +84,16 @@ print()
 ##################################################
 print("=== 응용 1: 평균 점수 ===")
 
+# 방법 1: 그냥 계산
 average = sum(scores) / len(scores)
+print(f"평균 점수: {average}점")
 
-# 방법 1: round() 함수
-average_rounded = round(average, 2)
-print(f"평균 점수: {average_rounded}점")
+# 방법 2: f-string으로 소수점 둘째자리까지
+print(f"평균 점수: {sum(scores) / len(scores):.2f}점")
 
-# 방법 2: f-string 포맷팅
-print(f"평균 점수: {average:.2f}점")
-
-# 출력: 평균 점수: 88.00점
+# 출력:
+# 평균 점수: 88.0점
+# 평균 점수: 88.00점
 print()
 
 
@@ -115,17 +106,15 @@ print("=== 응용 2: 최고점/최저점 학생 ===")
 max_score = max(scores)
 max_index = scores.index(max_score)
 max_student = students[max_index]
-
 print(f"최고점: {max_student} - {max_score}점")
 
 # 최저점 학생
 min_score = min(scores)
 min_index = scores.index(min_score)
 min_student = students[min_index]
-
 print(f"최저점: {min_student} - {min_score}점")
 
-# 한 줄로 표현
+# 한 줄로 표현 (심화)
 print(f"\n최고점: {students[scores.index(max(scores))]} - {max(scores)}점")
 print(f"최저점: {students[scores.index(min(scores))]} - {min(scores)}점")
 
@@ -140,16 +129,16 @@ print()
 ##################################################
 print("=== 응용 3: 박민수 삭제 ===")
 
-# 삭제 전 상태 저장
 print(f"삭제 전 학생: {students}")
 print(f"삭제 전 점수: {scores}")
 
-# 박민수 위치 찾기
+# 박민수의 위치 찾기
 student_to_remove = "박민수"
 remove_index = students.index(student_to_remove)
 
-# 삭제 (이름과 점수 둘 다)
+# 이름 삭제
 students.pop(remove_index)
+# 점수 삭제
 removed_score = scores.pop(remove_index)
 
 print(f"\n{student_to_remove} 삭제 완료 (점수: {removed_score}점)")
@@ -164,68 +153,54 @@ print()
 
 
 ##################################################
-# 도전 1: 점수 순으로 정렬된 명단 만들기
+# 도전 1: 점수 정렬하여 상위 3개 출력
 ##################################################
 print("=== 도전 1: 점수 정렬 ===")
 
-# 원본 유지를 위해 복사
-sorted_scores = scores.copy()
+print(f"정렬 전: {scores}")
 
-# 내림차순 정렬
-sorted_scores.sort(reverse=True)
+# 내림차순 정렬 (원본이 바뀜!)
+scores.sort(reverse=True)
 
-print(f"원본 점수: {scores}")
-print(f"정렬 점수: {sorted_scores}")
+print(f"정렬 후: {scores}")
 
-# 상위 3명의 점수
-top_3 = sorted_scores[:3]
-print(f"상위 3명 점수: {top_3}")
-
-# sorted() 함수 사용 (원본 유지, 한 줄로)
-top_3_alt = sorted(scores, reverse=True)[:3]
-print(f"상위 3명 점수 (sorted): {top_3_alt}")
+# 상위 3개
+top_3 = scores[:3]
+print(f"상위 3개: {top_3}")
 
 # 출력:
-# 원본 점수: [85, 92, 88, 90, 95]
-# 정렬 점수: [95, 92, 90, 88, 85]
-# 상위 3명 점수: [95, 92, 90]
+# 정렬 전: [85, 92, 88, 90, 95]
+# 정렬 후: [95, 92, 90, 88, 85]
+# 상위 3개: [95, 92, 90]
 print()
 
 
 ##################################################
-# 도전 2: 80점대 학생 수 세기
+# 도전 2: 특정 점수 개수와 점수 차이
 ##################################################
-print("=== 도전 2: 80점대 학생 수 ===")
+print("=== 도전 2: 점수 분석 ===")
 
-# 방법 1: for문과 if문 사용
-count_80s = 0
-for score in scores:
-    if 80 <= score < 90:
-        count_80s += 1
+# 1) 90점이 몇 개?
+count_90 = scores.count(90)
+print(f"90점 개수: {count_90}개")
 
-print(f"80점대 학생 수 (if 사용): {count_80s}명")
+# 2) 최고점과 최저점의 차이
+highest = max(scores)
+lowest = min(scores)
+difference = highest - lowest
 
-# 방법 2: if문 없이 - 리스트 컴프리헨션
-count_80s_no_if = len([s for s in scores if 80 <= s < 90])
-print(f"80점대 학생 수 (컴프리헨션): {count_80s_no_if}명")
+print(f"최고점: {highest}점")
+print(f"최저점: {lowest}점")
+print(f"점수 차이: {difference}점")
 
-# 방법 3: if문 없이 - 수동 카운트 (창의적!)
-# 각 점수가 80점대인지 확인하고 True(1) / False(0)로 변환해서 합산
-count_80s_creative = sum([80 <= score < 90 for score in scores])
-print(f"80점대 학생 수 (창의적): {count_80s_creative}명")
-
-# 80점대 학생들의 상세 정보
-print("\n80점대 학생 목록:")
-for i, score in enumerate(scores):
-    if 80 <= score < 90:
-        print(f"  {students[i]}: {score}점")
+# 한 줄로
+print(f"\n점수 차이 (한 줄): {max(scores) - min(scores)}점")
 
 # 출력:
-# 80점대 학생 수 (if 사용): 2명
-# 
-# 80점대 학생 목록:
-#   김철수: 85점
-#   최지훈: 88점
+# 90점 개수: 1개
+# 최고점: 95점
+# 최저점: 85점
+# 점수 차이: 10점
 print()
 
 
@@ -237,5 +212,5 @@ print(f"학생 명단: {students}")
 print(f"점수 목록: {scores}")
 print(f"총 학생 수: {len(students)}명")
 print(f"평균 점수: {sum(scores) / len(scores):.2f}점")
-print(f"최고점: {max(scores)}점 ({students[scores.index(max(scores))]})")
-print(f"최저점: {min(scores)}점 ({students[scores.index(min(scores))]})")
+print(f"최고점: {max(scores)}점")
+print(f"최저점: {min(scores)}점")
