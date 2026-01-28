@@ -33,7 +33,13 @@ print(type(is_engineer))    # <class 'bool'>
 # 타입 힌트 미리보기
 ##################################################
 
-# 타입을 명시할 수도 있다
+# 타입 힌트 없이
+name = "김철수"
+age = 25
+height = 175.5
+
+# 타입 힌트로 (명확하죠?)
 name: str = "김철수"
 age: int = 25
 height: float = 175.5
+is_engineer: bool = True
